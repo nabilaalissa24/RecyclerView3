@@ -1,8 +1,11 @@
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+
+import java.util.ArrayList;
 
 import id.sch.smktelkom_mlg.learn.recyclerview3.R;
 import id.sch.smktelkom_mlg.learn.recyclerview3.model.Hotel;
@@ -17,6 +20,10 @@ public class MainActivity extends AppCompatActivity {
         ImageView ivFoto;
         Uri uriFoto;
         Hotel hotel;
+        ArrayList<Hotel> mListAll = new ArrayList<>();
+        boolean isFiltered;
+        ArrayList<Integer> mListMapFilter = new ArrayList<>();
+        String mQuery;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +44,26 @@ public class MainActivity extends AppCompatActivity {
             });
 
             findViewById(R.id.buttonSimpan).setOnClickListener(new View.OnClickListener() {
+                MenuItem searchItem = menu.findItem(R.id.action_search);
+                SearchView searchView = (SearchView)
+                        MenuItemCompat.getActionView(searchItem);
+
+                {
+                    @Override
+                    public boolean onQueryTextSubmit (String query){
+                    return false;
+                }
+
+                    @Override
+                    public boolean onQueryTextChange (String newText){
+                    mQuery = newText.toLowerCase();
+                    doFilter(mQuery);
+                    return true;
+                }
+                }
+
+                searchView.setOnQueryTextListener(
+                        new SearchView.OnQueryTextListener()
                 @Override
                 public void onClick(View v) {
                     doSave();
@@ -58,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void doFav ( int pos){
-                                                
+
             }
 
             @Override
