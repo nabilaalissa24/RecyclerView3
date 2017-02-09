@@ -38,6 +38,30 @@ public class MainActivity extends AppCompatActivity {
                     doSave();
                 }
             });
+
+            @Override
+            public void doEdit ( int pos){
+                itemPos = pos;
+                Intent intent = new Intent(this, InputActivity.class);
+                intent.putExtra(HOTEL, mList.get(pos));
+                startActivityForResult(intent, REQUEST_CODE_EDIT);
+            }
+
+            @Override
+            public void doDelete ( int pos){
+
+            }
+
+            @Override
+            public void doFav ( int pos){
+
+            }
+
+            @Override
+            public void doShare ( int pos){
+
+            }
+
         }
 
         private void doSave() {
