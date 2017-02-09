@@ -1,6 +1,10 @@
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
 
+import id.sch.smktelkom_mlg.learn.recyclerview3.R;
 import id.sch.smktelkom_mlg.learn.recyclerview3.model.Hotel;
 
 public class MainActivity extends AppCompatActivity {
@@ -54,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void doFav ( int pos){
-
+                                                
             }
 
             @Override
